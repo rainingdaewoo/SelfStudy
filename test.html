@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // concat, filter, map, slice, 스프레드(전개) 연산자
+        const a = [1, 2, 3];
+        const b = [...a];
+
+        console.log("1. 스프레드 연산자");
+        console.log("a: " + a);
+        console.log("b: " + b);
+        b.push(4);
+        console.log("after push : " + a);
+        console.log("after push : " + b);
+        console.log(`after push : ${a}` );
+        const c = [...a, 4];
+
+        console.log("2. 추가하기");
+        const a2 = [1, 2, 3];
+        const b2 = a2.concat(4);
+        console.log("a2: " + a2); // 1, 2, 3
+        console.log("b2: " + b2); // 1, 2, 3, 4
+        
+
+        console.log("3. 걸러내기");  // 보통 삭제할 때 사용
+        const a3 = [1, 2, 3];
+        const b3 = a3.filter( (n)=> {
+                        return n != 1;
+                    } );    // boolean을 return 받는다. -> true만 걸러낸다.
+        console.log(b3);  // 2, 3
+
+        console.log("4. 잘라내기");
+        const a4 = [1, 2, 3];
+        const b4 = a4.slice(0, 2);
+        console.log(b4);  // [1, 2]
+        const c4 = [...a4.slice(0, 2)];
+        console.log(c4);  // [[1, 2]] / ...을 붙이면 b4랑 같음
+
+        console.log("5. 반복하기");
+        const a5 = [1, 2, 3];
+        // a5.forEach( (n)=> { console.log(n) }); // return을 못함.
+        const b5 = a5.map( (n)=> n);    // const b5 = [...a5];
+        console.log(b5);
+
+        const user = [
+            {id:1, name:"구태모", phone:"1111"}
+            , {id:2, name:"구태모2", phone:"2222"}
+            , {id:3, name:"구태모3", phone:"3333"}
+        ];
+
+        const updateUserDto = {
+            id:2, name:"홍길동"
+        }
+
+        const newUser = user.map( user => user.id === updateUserDto.id ? {...user, ...updateUserDto} : user);
+        console.log("newUsers", newUser);    
+
+    </script>
+</body>
+</html>
