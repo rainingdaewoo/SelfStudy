@@ -9,6 +9,8 @@ function App() {
     { id: 2, name: "홍길동"}
   ]);
   
+  
+  
   const myRefs = Array.from({length:list.length}).map( () => createRef() );
 
   return (
