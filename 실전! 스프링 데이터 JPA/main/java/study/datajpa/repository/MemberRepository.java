@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
 
     List<Member> findByUsername(String username);
 
@@ -63,5 +63,11 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findReadOnlyByUsername(String username);
 
    /* @Lock(LockModeType.PESSIMISTIC_WRITE)
-    List<Member> findByUsername(String name);*/
+    List<Member> findByUsername(String name);
+
+    @QueryHints(value = { @QueryHint(name = "org.hibernate.readOnly",
+            value = "true")},
+            forCounting = true)
+    Page<Member> findByUsername(String name, Pagable pageable);*/
+
 }
