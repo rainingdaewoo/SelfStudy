@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/omechu
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .mustache
+
+  jpa:
+    hibernate:
+      ddl-auto: none #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 628475285967-1mufurlb0u8fg4m1eas0b1922o3m5fjv.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
